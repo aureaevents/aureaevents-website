@@ -137,7 +137,7 @@ const galleryImages = [
 
 const stats = [
   { value: 500, suffix: "+", label: "Events Planned" },
-  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 2, suffix: "+", label: "Years Experience" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
   { value: 50, suffix: "+", label: "Team Members" },
 ];
@@ -262,8 +262,8 @@ export default function Home() {
                 an unwavering commitment to excellence.
               </p>
               <p className="font-body text-charcoal leading-relaxed mb-8">
-                From concept to completion, we handle every detail so you can
-                focus on what matters most — enjoying the moment with the people
+                From concept to execution, we handle every detail so you can
+                focus on what matters most, enjoying the moment with the people
                 you love.
               </p>
               <Button to="/about" variant="primary">
@@ -398,7 +398,7 @@ export default function Home() {
               <SectionHeading
                 label="Testimonials"
                 title="What Our Clients Say"
-                subtitle="Don't just take our word for it — hear from the couples and companies who trusted us with their most important moments."
+                subtitle="Don't just take our word for it, hear from the couples and companies who trusted us with their most important moments."
               />
               <TestimonialSlider />
             </div>

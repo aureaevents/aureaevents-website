@@ -245,13 +245,13 @@ export default function Contact() {
                   step: "01",
                   title: "Consultation",
                   description:
-                    "Share your vision with us in a free initial consultation. We listen, we understand, we advise.",
+                    "Share your vision with us during a personalised consultation. We listen, understand your needs, and provide expert guidance to help bring your event vision to life.",
                 },
                 {
                   step: "02",
                   title: "Planning",
                   description:
-                    "Our team crafts a detailed plan covering every aspect — venue, vendors, timeline, and budget.",
+                    "Our team crafts a detailed plan covering every aspect; venue, vendors, timeline, and budget.",
                 },
                 {
                   step: "03",

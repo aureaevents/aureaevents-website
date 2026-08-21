@@ -46,9 +46,9 @@ export default function Header() {
           aria-label="Aurea Events Home"
         >
           <img
-            src="/Aurea Events Logo 1.jpg.jpeg"
+            src="/Aurea_Events_Logo1.png"
             alt="Aurea Events Logo"
-            className="h-10 sm:h-12 w-auto object-contain rounded"
+            className="h-12 w-auto object-contain rounded"
             width={48}
             height={48}
           />

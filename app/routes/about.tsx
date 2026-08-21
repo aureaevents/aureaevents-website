@@ -49,7 +49,7 @@ const values = [
     ),
     title: "Excellence",
     description:
-      "We pursue the highest standards in every detail, ensuring flawless execution from concept to completion.",
+      "We pursue the highest standards in every detail, ensuring flawless execution from concept to execution.",
   },
   {
     icon: (
@@ -171,13 +171,13 @@ export default function About() {
               </p>
               <p className="font-body text-charcoal/60 leading-relaxed mb-4">
                 Our name, &ldquo;Aurea,&rdquo; draws from the Latin word for
-                &ldquo;golden&rdquo; — reflecting our commitment to delivering
+                &ldquo;golden&rdquo;, reflecting our commitment to delivering
                 events that shine with quality, elegance, and timeless beauty.
                 Every detail, from the first consultation to the final farewell,
                 is handled with meticulous care.
               </p>
               <p className="font-body text-charcoal/60 leading-relaxed mb-8">
-                With over a decade of experience and hundreds of successful
+                With over 2 years of experience and a handful of successful
                 events, we&apos;ve built a reputation for turning dreams into
                 reality. Our diverse portfolio spans intimate weddings, grand
                 corporate galas, vibrant birthday celebrations, and everything
@@ -319,7 +319,7 @@ export default function About() {
               <p className="font-body text-charcoal/60 leading-relaxed">
                 To transform every client&apos;s vision into a breathtaking
                 reality through personalized service, creative design, and
-                seamless coordination — ensuring every event is a golden
+                seamless coordination, ensuring every event is a golden
                 experience.
               </p>
             </div>
