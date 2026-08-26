@@ -35,6 +35,7 @@
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-count-up: count-up 2s ease-out forwards;
   --animate-ken-burns: ken-burns 20s ease-in-out infinite alternate;
+  --animate-marquee: marquee 40s linear infinite;
 }
 
 @keyframes fade-in {

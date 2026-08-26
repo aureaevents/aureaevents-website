@@ -9,6 +9,7 @@ import TestimonialSlider from "~/components/TestimonialSlider";
 import StatsCounter from "~/components/StatsCounter";
 import GalleryGrid from "~/components/GalleryGrid";
 import { useReveal } from "~/hooks/useReveal";
+import ImageContainer from "~/components/ImagesContainer";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -135,6 +136,21 @@ const galleryImages = [
   { src: "/wedding-event.png", alt: "Outdoor Ceremony", category: "Wedding" },
 ];
 
+const homeImages = [
+  { src: "/_B6A0236.jpg", surfaceText: "Grand Ballroom Reception" },
+  { src: "/_B6A0022.jpg", surfaceText: "Luxury Gala Dinner" },
+  { src: "/_B6A0047.jpg", surfaceText: "Elegant Banquet Setup" },
+  { src: "/_B6A0117.jpg", surfaceText: "Bespoke Floral Decor" },
+  { src: "/_B6A0301.jpg", surfaceText: "Corporate Gala Night" },
+  { src: "/_B6A0346.jpg", surfaceText: "Celebration Stage Design" },
+  { src: "/_B6A8426.jpg", surfaceText: "VIP Birthday Party" },
+  { src: "/_B6A8428.jpg", surfaceText: "Atmospheric Lighting" },
+  { src: "/_B6A8450.jpg", surfaceText: "Executive Gathering" },
+  { src: "/_B6A8474.jpg", surfaceText: "Outdoor Wedding Reception" },
+  { src: "/_B6A8492.jpg", surfaceText: "Premium Event Experience" },
+  { src: "/_B6A8503.jpg", surfaceText: "Milestone Celebration" },
+];
+
 const stats = [
   { value: 500, suffix: "+", label: "Events Planned" },
   { value: 2, suffix: "+", label: "Years Experience" },
@@ -157,7 +173,7 @@ export default function Home() {
         {/* ===== HERO SECTION ===== */}
         <section
           id="hero"
-          className="relative min-h-screen flex items-center justify-center overflow-hidden"
+          className="relative min-h-screen flex flex-col justify-between pt-24 pb-12 overflow-hidden"
         >
           {/* Background Image with Ken Burns */}
           {/* <div className="absolute inset-0">
@@ -178,9 +194,9 @@ export default function Home() {
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight animate-fade-in">
               Aurea Events
               <br />
-              <span className="text-gold-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl  ">
+              {/* <span className="text-gold-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl  ">
                 Creating Moment Worth Remembering
-              </span>
+              </span> */}
             </h1>
             <p className="font-body text-base md:text-lg max-w-2xl mx-auto mb-10 font-medium animate-fade-in-up leading-relaxed">
               We transform your vision into extraordinary events. From intimate
@@ -205,8 +221,21 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Gallery scroll marquee (Right-to-Left Infinite Scroll with Big Images) */}
+          <div className="relative z-10 w-full overflow-hidden py-8 my-6">
+            <div className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused]">
+              {[...homeImages, ...homeImages].map((image, index) => (
+                <ImageContainer
+                  key={index}
+                  src={image.src}
+                  surfaceText={image.surfaceText}
+                />
+              ))}
+            </div>
+          </div>
+
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+          <div className="relative z-10 flex justify-center animate-float">
             <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center pt-2">
               <div className="w-1 h-2.5 rounded-full bg-white/60 animate-fade-in" />
             </div>
