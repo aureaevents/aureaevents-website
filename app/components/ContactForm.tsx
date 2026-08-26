@@ -15,6 +15,10 @@ export default function ContactForm() {
     phone: "",
     eventType: "",
     eventDate: "",
+    venueAvailability: "",
+    guestsNo: "",
+    budget: "",
+    importantPoint: "",
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -102,9 +106,18 @@ export default function ContactForm() {
             htmlFor="eventType"
             className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
           >
-            Event Type
+            Whats the Occasion?
           </label>
-          <select
+          <input
+            type="text"
+            id="eventtype"
+            name="eventtype"
+            value={formData.eventType}
+            onChange={handleChange}
+            placeholder="Wedding"
+            className={inputClasses}
+          />
+          {/* <select
             id="eventType"
             name="eventType"
             value={formData.eventType}
@@ -117,44 +130,129 @@ export default function ContactForm() {
                 {type}
               </option>
             ))}
+          </select> */}
+        </div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label
+            htmlFor="eventDate"
+            className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
+          >
+            Preferred Event Date
+          </label>
+          <input
+            type="date"
+            id="eventDate"
+            name="eventDate"
+            value={formData.eventDate}
+            onChange={handleChange}
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="venueAvailability"
+            className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
+          >
+            Do you have a venue yet?
+          </label>
+          <select
+            id="eventType"
+            name="eventType"
+            value={formData.eventType}
+            onChange={handleChange}
+            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
+          >
+            <option value="">Yes / No</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label
+            htmlFor="guestsNo"
+            className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
+          >
+            Guests Expectation
+          </label>
+          <input
+            type="number"
+            id="guestsNo"
+            name="guestsNo"
+            value={formData.guestsNo}
+            onChange={handleChange}
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="budget"
+            className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
+          >
+            What's your budget?
+          </label>
+          <select
+            id="budget"
+            name="budget"
+            value={formData.budget}
+            onChange={handleChange}
+            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
+          >
+            <option value="1M-2M">1,000,000 - 2,000,000</option>
+            <option value="2M-3M">2,000,000 - 3,000,000</option>
+            <option value="3M-4M">3,000,000 - 4,000,000</option>
+            <option value="4M+">4,000,000 +</option>
           </select>
         </div>
       </div>
 
-      <div>
-        <label
-          htmlFor="eventDate"
-          className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
-        >
-          Preferred Event Date
-        </label>
-        <input
-          type="date"
-          id="eventDate"
-          name="eventDate"
-          value={formData.eventDate}
-          onChange={handleChange}
-          className={inputClasses}
-        />
-      </div>
+      <div className="grid grid-cols-1 gap-5">
+        <div>
+          <label
+            htmlFor="importantPoint"
+            className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
+          >
+            What matters most to you in your event?
+          </label>
+          <select
+            id="importantPoint"
+            name="importantPoint"
+            value={formData.importantPoint}
+            onChange={handleChange}
+            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
+          >
+            <option value="Beautiful Decor">Beautiful Decor</option>
+            <option value="Guest Experience ">Guest Experience </option>
+            <option value="Smooth Coordination">Smooth Coordination</option>
+            <option value="Budget-friendly Planning">
+              Budget-friendly Planning
+            </option>
+            <option value="Luxury Experience">Luxury Experience</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
 
-      <div>
-        <label
-          htmlFor="message"
-          className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
-        >
-          Tell Us About Your Event *
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={5}
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Describe your dream event..."
-          className={`${inputClasses} resize-none`}
-        />
+        <div>
+          <label
+            htmlFor="message"
+            className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
+          >
+            Tell Us About Your Event *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Describe your dream event..."
+            className={`${inputClasses} resize-none`}
+          />
+        </div>
       </div>
 
       <button
