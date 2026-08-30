@@ -23,54 +23,61 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const galleryImages = [
-  { src: "/hero-bg.png", alt: "Grand Ballroom Gala", category: "Corporate" },
   {
-    src: "/wedding-event.png",
-    alt: "Garden Wedding Ceremony",
-    category: "Wedding",
-  },
-  {
-    src: "/corporate-event.png",
-    alt: "Executive Conference",
+    src: "/main/_B6A8515.JPEG",
+    alt: "Luxury Gala Event",
     category: "Corporate",
   },
   {
-    src: "/birthday-party.png",
-    alt: "Luxury Birthday Bash",
-    category: "Birthday",
-  },
-  {
-    src: "/wedding-event.png",
-    alt: "Beach Wedding Reception",
+    src: "/main/_B6A8769.JPEG",
+    alt: "Garden Wedding Setup",
     category: "Wedding",
   },
-  { src: "/hero-bg.png", alt: "Annual Awards Night", category: "Corporate" },
   {
-    src: "/birthday-party.png",
-    alt: "Children's Birthday",
-    category: "Birthday",
-  },
-  {
-    src: "/corporate-event.png",
-    alt: "Product Launch Event",
+    src: "/main/_B6A8350.JPEG",
+    alt: "Corporate Conference",
     category: "Corporate",
   },
   {
-    src: "/wedding-event.png",
-    alt: "Traditional Wedding",
-    category: "Wedding",
-  },
-  { src: "/hero-bg.png", alt: "Cocktail Reception", category: "Social" },
-  {
-    src: "/birthday-party.png",
-    alt: "Milestone Celebration",
+    src: "/main/_B6A8867.JPEG",
+    alt: "Birthday Celebration",
     category: "Birthday",
   },
   {
-    src: "/corporate-event.png",
-    alt: "Charity Gala Dinner",
-    category: "Social",
+    src: "/main/_B6A8809.JPEG",
+    alt: "Grand Ballroom Reception",
+    category: "Wedding",
   },
+  { src: "/main/_B6A8894.JPEG", alt: "Outdoor Ceremony", category: "Wedding" },
+  { src: "/main/_B6A9536.JPEG", alt: "Garden setup", category: "Wedding" },
+  // 2nd set
+  {
+    src: "/main/_B6A9830.JPEG",
+    alt: "Luxury Gala Event",
+    category: "Corporate",
+  },
+  {
+    src: "/main/Website 17.JPEG",
+    alt: "Garden Wedding Setup",
+    category: "Wedding",
+  },
+  {
+    src: "/main/Website 4.JPEG",
+    alt: "Corporate Conference",
+    category: "Corporate",
+  },
+  {
+    src: "/main/_B6A8990.JPEG",
+    alt: "Birthday Celebration",
+    category: "Birthday",
+  },
+  {
+    src: "/main/IMG_5189.JPG",
+    alt: "Grand Ballroom Reception",
+    category: "Wedding",
+  },
+  { src: "/main/_B6A0120.JPEG", alt: "Outdoor Ceremony", category: "Wedding" },
+  { src: "/main/_B6A0091.JPEG", alt: "Garden setup", category: "Wedding" },
 ];
 
 export default function Gallery() {

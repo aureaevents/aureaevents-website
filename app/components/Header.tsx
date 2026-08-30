@@ -108,12 +108,12 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 top-0 bg-cobalt-900/98 backdrop-blur-lg z-40 transition-all duration-500 flex flex-col items-center justify-center ${
+        className={`lg:hidden fixed top-18  w-screen bg-cobalt-900/98 backdrop-blur-lg z-40 transition-all duration-500 flex flex-col py-6 items-center justify-center ${
           isMobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         {/* Close button */}
-        <button
+        {/* <button
           className="absolute top-6 right-6 text-white p-2"
           onClick={() => setIsMobileOpen(false)}
           aria-label="Close menu"
@@ -128,7 +128,7 @@ export default function Header() {
           >
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
-        </button>
+        </button> */}
 
         <nav
           className="flex flex-col items-center gap-6"

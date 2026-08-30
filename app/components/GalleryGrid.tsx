@@ -66,30 +66,57 @@ export default function GalleryGrid({
         </div>
       )}
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredImages.map((img, i) => (
-          <button
-            key={`${img.src}-${i}`}
-            onClick={() => openLightbox(i)}
-            className="img-overlay-container rounded-xl overflow-hidden aspect-4/3 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500"
-            aria-label={`View ${img.alt}`}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-            {/* Hover overlay text */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 translate-y-2 group-hover:translate-y-0">
-              <p className="font-body text-sm font-semibold text-white">
-                {img.alt}
-              </p>
-              <p className="font-body text-xs text-white/70">{img.category}</p>
-            </div>
-          </button>
-        ))}
+      {/* Grid Layout matching reference design */}
+      {/*
+        ========================================================================
+        GALLERY LAYOUT CONFIGURATION & ORIENTATION MAPPING
+        ========================================================================
+        Pattern repeats every 7 images (index % 7):
+
+        • Index 0 (Image #1): LANDSCAPE (Spans 2 columns - Top Left)
+        • Index 1 (Image #2): PORTRAIT  (Spans 1 column  - Top Right)
+        • Index 2 (Image #3): PORTRAIT  (Spans 1 column  - Row 2 Left)
+        • Index 3 (Image #4): PORTRAIT  (Spans 1 column  - Row 2 Center)
+        • Index 4 (Image #5): PORTRAIT  (Spans 1 column  - Row 2 Right)
+        • Index 5 (Image #6): PORTRAIT  (Spans 1 column  - Row 3 Left)
+        • Index 6 (Image #7): LANDSCAPE (Spans 2 columns - Row 3 Right)
+        ========================================================================
+      */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        {filteredImages.map((img, i) => {
+          const patternIndex = i % 7;
+          // Index 0 & 6 are LANDSCAPE (col-span-2), Indices 1, 2, 3, 4, 5 are PORTRAIT (col-span-1)
+          const isLandscape = patternIndex === 0 || patternIndex === 6;
+
+          return (
+            <button
+              key={`${img.src}-${i}`}
+              onClick={() => openLightbox(i)}
+              className={`img-overlay-container rounded-2xl overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt-500 transition-all duration-300 ${
+                isLandscape
+                  ? "col-span-1 md:col-span-2 h-64 sm:h-80 md:h-96" /* LANDSCAPE: 2 columns */
+                  : "col-span-1 md:col-span-1 h-64 sm:h-80 md:h-96" /* PORTRAIT: 1 column */
+              }`}
+              aria-label={`View ${img.alt}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              {/* Hover overlay text */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 translate-y-2 group-hover:translate-y-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <p className="font-body text-sm sm:text-base font-semibold text-white">
+                  {img.alt}
+                </p>
+                <p className="font-body text-xs text-white/70 mt-1">
+                  {img.category}
+                </p>
+              </div>
+            </button>
+          );
+        })}
       </div>
 
       {/* Lightbox */}

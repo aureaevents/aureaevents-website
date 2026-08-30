@@ -25,7 +25,7 @@ export function meta({}: Route.MetaArgs) {
 
 const stats = [
   { value: 500, suffix: "+", label: "Events Planned" },
-  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 2, suffix: "+", label: "Years Experience" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
   { value: 50, suffix: "+", label: "Team Members" },
 ];
@@ -126,7 +126,7 @@ export default function About() {
         <section className="relative h-[60vh] min-h-100 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/hero-bg.png"
+              src="/main/Website 8.jpg"
               alt=""
               className="w-full h-full object-cover"
               fetchPriority="high"
@@ -190,7 +190,7 @@ export default function About() {
             <div className="order-1 lg:order-2 relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/corporate-event.png"
+                  src="/main/Website 16.JPEG"
                   alt="Aurea Events team at work"
                   className="w-full h-100 md:h-125 object-cover"
                   loading="lazy"

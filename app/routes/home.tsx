@@ -116,39 +116,55 @@ const services = [
 ];
 
 const galleryImages = [
-  { src: "/hero-bg.png", alt: "Luxury Gala Event", category: "Corporate" },
   {
-    src: "/wedding-event.png",
+    src: "/main/_B6A8515.JPEG",
+    alt: "Luxury Gala Event",
+    category: "Corporate",
+  },
+  {
+    src: "/main/_B6A8769.JPEG",
     alt: "Garden Wedding Setup",
     category: "Wedding",
   },
   {
-    src: "/corporate-event.png",
+    src: "/main/_B6A8350.JPEG",
     alt: "Corporate Conference",
     category: "Corporate",
   },
   {
-    src: "/birthday-party.png",
+    src: "/main/_B6A8867.JPEG",
     alt: "Birthday Celebration",
     category: "Birthday",
   },
-  { src: "/hero-bg.png", alt: "Grand Ballroom Reception", category: "Wedding" },
-  { src: "/wedding-event.png", alt: "Outdoor Ceremony", category: "Wedding" },
+  {
+    src: "/main/_B6A8809.JPEG",
+    alt: "Grand Ballroom Reception",
+    category: "Wedding",
+  },
+  { src: "/main/_B6A8894.JPEG", alt: "Outdoor Ceremony", category: "Wedding" },
+  { src: "/main/_B6A9536.JPEG", alt: "Garden setup", category: "Wedding" },
 ];
 
 const homeImages = [
-  { src: "/_B6A0236.jpg", surfaceText: "Grand Ballroom Reception" },
-  { src: "/_B6A0022.jpg", surfaceText: "Luxury Gala Dinner" },
-  { src: "/_B6A0047.jpg", surfaceText: "Elegant Banquet Setup" },
-  { src: "/_B6A0117.jpg", surfaceText: "Bespoke Floral Decor" },
-  { src: "/_B6A0301.jpg", surfaceText: "Corporate Gala Night" },
-  { src: "/_B6A0346.jpg", surfaceText: "Celebration Stage Design" },
-  { src: "/_B6A8426.jpg", surfaceText: "VIP Birthday Party" },
-  { src: "/_B6A8428.jpg", surfaceText: "Atmospheric Lighting" },
-  { src: "/_B6A8450.jpg", surfaceText: "Executive Gathering" },
-  { src: "/_B6A8474.jpg", surfaceText: "Outdoor Wedding Reception" },
-  { src: "/_B6A8492.jpg", surfaceText: "Premium Event Experience" },
-  { src: "/_B6A8503.jpg", surfaceText: "Milestone Celebration" },
+  { src: "/main/Website 1.JPEG", surfaceText: "Grand Ballroom Reception" },
+  { src: "/main/Website 2.JPEG", surfaceText: "Luxury Gala Dinner" },
+  { src: "/main/Website 3.JPEG", surfaceText: "Elegant Banquet Setup" },
+  { src: "/main/Website 4.JPEG", surfaceText: "Bespoke Floral Decor" },
+  { src: "/main/Website 5.JPG", surfaceText: "Corporate Gala Night" },
+  { src: "/main/Website 6.JPEG", surfaceText: "Celebration Stage Design" },
+  { src: "/main/Website 7.JPEG", surfaceText: "VIP Birthday Party" },
+  { src: "/main/Website 8.jpg", surfaceText: "Atmospheric Lighting" },
+  { src: "/main/Website 9.JPEG", surfaceText: "Executive Gathering" },
+  { src: "/main/Website 10.JPEG", surfaceText: "Outdoor Wedding Reception" },
+  { src: "/main/Website 11.jpg", surfaceText: "Premium Event Experience" },
+  // { src: "/main/Website 12.JPG", surfaceText: "Milestone Celebration" },
+  // { src: "/main/Website 13.JPEG", surfaceText: "Milestone Celebration" },
+  // { src: "/main/Website 14.jpg", surfaceText: "Milestone Celebration" },
+  // { src: "/main/Website 15.JPEG", surfaceText: "Milestone Celebration" },
+  { src: "/main/Website 16.JPEG", surfaceText: "Milestone Celebration" },
+  { src: "/main/Website 16.jpg", surfaceText: "Milestone Celebration" },
+  { src: "/main/Website 17.JPEG", surfaceText: "Milestone Celebration" },
+  { src: "/main/Website 18.JPEG", surfaceText: "Milestone Celebration" },
 ];
 
 const stats = [
@@ -185,6 +201,21 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-cobalt-900/70 via-cobalt-900/50 to-cobalt-900/80" />
           </div> */}
+
+          {/* background Hues */}
+          <span
+            className="
+    absolute rounded-2xl top-0 -left-10 opacity-30 blur-3xl w-xl h-112.5  
+    bg-cobalt-900/80
+  "
+          ></span>
+
+          <span
+            className="
+    absolute rounded-2xl bottom-40 right-0 opacity-30 blur-3xl w-xl h-112.5 
+    bg-purple-900/80
+  "
+          ></span>
 
           {/* Hero Content */}
           <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -256,7 +287,7 @@ export default function Home() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/wedding-event.png"
+                  src="/main/Website 8.jpg"
                   alt="Aurea Events — Elegant wedding setup"
                   className="w-full h-100 md:h-125 object-cover"
                   loading="lazy"
@@ -266,7 +297,7 @@ export default function Home() {
               <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-gold-500 rounded-2xl -z-10" />
               {/* Experience badge */}
               <div className="absolute -bottom-6 -left-6 bg-cobalt-700 text-white rounded-2xl p-5 shadow-xl hidden md:block">
-                <p className="font-heading text-3xl">12+</p>
+                <p className="font-heading text-3xl">2+</p>
                 <p className="font-body text-xs uppercase tracking-wider text-white/70">
                   Years of Excellence
                 </p>
