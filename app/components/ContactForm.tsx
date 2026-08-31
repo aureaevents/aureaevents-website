@@ -16,17 +16,18 @@ const eventTypes = [
 export default function ContactForm() {
   const form = useRef(null);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    eventType: "",
-    eventDate: "",
-    venueAvailability: "",
-    guestsNo: "",
-    budget: "",
-    importantPoint: "",
-    message: "",
+    full_name: "",
+    email_address: "",
+    phone_number: "",
+    occasion: "",
+    preferred_date: "",
+    venue_status: "No",
+    number_of_guests: "",
+    budget: "₦1,000,000-₦2,000,000",
+    what_matters_most: "Beautiful Decor",
+    other_notes: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -43,31 +44,31 @@ export default function ContactForm() {
 
     setError("");
 
-    if (!formData.name) {
+    if (!formData.full_name) {
       setError("Please fill in your name");
       return;
     }
-    if (!formData.email) {
+    if (!formData.email_address) {
       setError("Please fill in your email");
       return;
     }
-    if (!formData.phone) {
+    if (!formData.phone_number) {
       setError("Please fill in your phone number");
       return;
     }
-    if (!formData.eventType) {
-      setError("Please fill in your event type");
+    if (!formData.occasion) {
+      setError("Please fill in the occasion type");
       return;
     }
-    if (!formData.eventDate) {
+    if (!formData.preferred_date) {
       setError("Please fill in your event date");
       return;
     }
-    if (!formData.venueAvailability) {
+    if (!formData.venue_status) {
       setError("Please fill in your venue availability");
       return;
     }
-    if (!formData.guestsNo) {
+    if (!formData.number_of_guests) {
       setError("Please fill in your number of guests");
       return;
     }
@@ -75,12 +76,8 @@ export default function ContactForm() {
       setError("Please fill in your budget");
       return;
     }
-    if (!formData.importantPoint) {
-      setError("Please fill in your important point");
-      return;
-    }
-    if (!formData.message) {
-      setError("Please fill in your message");
+    if (!formData.what_matters_most) {
+      setError("Please decide in what matters most to you in your event");
       return;
     }
     console.log("Form submitted:", formData);
@@ -89,20 +86,53 @@ export default function ContactForm() {
       console.error("Form is null");
       return;
     }
+
+    setIsLoading(true);
+
+    const templateParams = {
+      full_name: formData.full_name,
+      email_address: formData.email_address,
+      phone_number: formData.phone_number,
+      occasion: formData.occasion,
+      preferred_date: formData.preferred_date,
+      venue_status: formData.venue_status,
+      number_of_guests: formData.number_of_guests,
+      budget: formData.budget,
+      what_matters_most: formData.what_matters_most,
+      other_notes: formData.other_notes,
+    };
+
+    console.log("Template params:", templateParams);
+    console.log("EmailJS Service ID:", emailJsServiceId);
+    console.log("EmailJS Template ID:", emailJsTemplateId);
+    console.log("EmailJS Public Key:", emailJsPublicKey);
     emailjs
-      .sendForm(emailJsServiceId, emailJsTemplateId, form.current, {
+      .send(emailJsServiceId, emailJsTemplateId, templateParams, {
         publicKey: emailJsPublicKey,
       })
       .then(
         () => {
+          setIsLoading(false);
           setIsSubmitted(true);
-          setTimeout(() => setIsSubmitted(false), 4000);
           console.log("SUCCESS!");
+          setFormData({
+            full_name: "",
+            email_address: "",
+            phone_number: "",
+            occasion: "",
+            preferred_date: "",
+            venue_status: "",
+            number_of_guests: "",
+            budget: "",
+            what_matters_most: "",
+            other_notes: "",
+          });
         },
         (error) => {
           console.log("FAILED...", error.text);
-          setError("Failed to send message");
-          setTimeout(() => setError(""), 4000);
+          setIsLoading(false);
+          setError("Failed to send message. Please try again.");
+          setTimeout(() => setError(""), 5000);
         },
       );
   };
@@ -114,7 +144,7 @@ export default function ContactForm() {
     <form
       ref={form}
       onSubmit={handleSubmit}
-      className="space-y-5"
+      className="space-y-5 relative"
       id="contact-form"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -130,7 +160,7 @@ export default function ContactForm() {
             id="name"
             name="full_name"
             required
-            value={formData.name}
+            value={formData.full_name}
             onChange={handleChange}
             placeholder="Your full name"
             className={inputClasses}
@@ -148,7 +178,7 @@ export default function ContactForm() {
             id="email"
             name="email_address"
             required
-            value={formData.email}
+            value={formData.email_address}
             onChange={handleChange}
             placeholder="your@email.com"
             className={inputClasses}
@@ -168,7 +198,7 @@ export default function ContactForm() {
             type="tel"
             id="phone"
             name="phone_number"
-            value={formData.phone}
+            value={formData.phone_number}
             onChange={handleChange}
             placeholder="+234 800 000 0000"
             className={inputClasses}
@@ -185,40 +215,26 @@ export default function ContactForm() {
             type="text"
             id="eventtype"
             name="occasion"
-            value={formData.eventType}
+            value={formData.occasion}
             onChange={handleChange}
             placeholder="Wedding"
             className={inputClasses}
           />
-          {/* <select
-            id="eventType"
-            name="eventType"
-            value={formData.eventType}
-            onChange={handleChange}
-            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
-          >
-            <option value="">Select event type</option>
-            {eventTypes.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select> */}
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label
-            htmlFor="eventDate"
+            htmlFor="preferred_date"
             className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
           >
             Preferred Event Date
           </label>
           <input
             type="date"
-            id="eventDate"
+            id="preferred_date"
             name="preferred_date"
-            value={formData.eventDate}
+            value={formData.preferred_date}
             onChange={handleChange}
             className={inputClasses}
           />
@@ -233,11 +249,10 @@ export default function ContactForm() {
           <select
             id="venue_status"
             name="venue_status"
-            value={formData.venueAvailability}
+            value={formData.venue_status}
             onChange={handleChange}
             className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
           >
-            <option value="">Yes / No</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
@@ -246,16 +261,16 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label
-            htmlFor="guestsNo"
+            htmlFor="number_of_guests"
             className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
           >
-            Guests Expectation
+            Expected Number of Guests
           </label>
           <input
             type="number"
-            id="guestsNo"
+            id="number_of_guests"
             name="number_of_guests"
-            value={formData.guestsNo}
+            value={formData.number_of_guests}
             onChange={handleChange}
             className={inputClasses}
           />
@@ -274,10 +289,16 @@ export default function ContactForm() {
             onChange={handleChange}
             className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
           >
-            <option value="1M-2M">1,000,000 - 2,000,000</option>
-            <option value="2M-3M">2,000,000 - 3,000,000</option>
-            <option value="3M-4M">3,000,000 - 4,000,000</option>
-            <option value="4M+">4,000,000 +</option>
+            <option value="₦1,000,000-₦2,000,000">
+              ₦1,000,000 - ₦2,000,000
+            </option>
+            <option value="₦2,000,000-₦3,000,000">
+              ₦2,000,000 - ₦3,000,000
+            </option>
+            <option value="₦3,000,000-₦4,000,000">
+              ₦3,000,000 - ₦4,000,000
+            </option>
+            <option value="₦4,000,000+">₦4,000,000 +</option>
           </select>
         </div>
       </div>
@@ -291,9 +312,9 @@ export default function ContactForm() {
             What matters most to you in your event?
           </label>
           <select
-            id="importantPoint"
+            id="what_matters_most"
             name="what_matters_most"
-            value={formData.importantPoint}
+            value={formData.what_matters_most}
             onChange={handleChange}
             className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
           >
@@ -313,14 +334,13 @@ export default function ContactForm() {
             htmlFor="message"
             className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
           >
-            Tell Us About Your Event *
+            Tell Us About Your Event
           </label>
           <textarea
             id="message"
             name="other_notes"
-            required
             rows={5}
-            value={formData.message}
+            value={formData.other_notes}
             onChange={handleChange}
             placeholder="Describe your dream event..."
             className={`${inputClasses} resize-none`}
@@ -331,9 +351,38 @@ export default function ContactForm() {
       <button
         type="submit"
         id="contact-submit-btn"
-        className="w-full sm:w-auto bg-cobalt-700 text-white font-body font-semibold text-sm uppercase tracking-wider px-10 py-4 rounded-full hover:bg-cobalt-600 shadow-md hover:shadow-lg hover:-translate-y-0.5 btn-transition"
+        disabled={isLoading}
+        className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-cobalt-700 text-white font-body font-semibold text-sm uppercase tracking-wider px-10 py-4 rounded-full hover:bg-cobalt-600 shadow-md hover:shadow-lg hover:-translate-y-0.5 btn-transition ${
+          isLoading ? "opacity-70 cursor-not-allowed" : ""
+        }`}
       >
-        {isSubmitted ? "✓ Message Sent!" : "Send Message"}
+        {isLoading ? (
+          <>
+            <svg
+              className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Sending...
+          </>
+        ) : (
+          "Send Message"
+        )}
       </button>
 
       {error && (
@@ -342,10 +391,76 @@ export default function ContactForm() {
         </p>
       )}
 
+      {/* Subtle Success Pop-up Modal */}
       {isSubmitted && (
-        <p className="font-body text-sm text-green-600 mt-2 animate-fade-in">
-          Thank you! We&apos;ll get back to you within 24 hours.
-        </p>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in"
+          onClick={() => setIsSubmitted(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="success-modal-title"
+        >
+          <div
+            className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-cobalt-100/60 text-center relative transform transition-all animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsSubmitted(false)}
+              className="absolute top-4 right-4 text-charcoal/40 hover:text-charcoal p-1 rounded-full btn-transition"
+              aria-label="Close message"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 12.75l6 6 9-13.5"
+                />
+              </svg>
+            </div>
+
+            <h3
+              id="success-modal-title"
+              className="font-heading text-2xl text-cobalt-900 mb-2"
+            >
+              Message Received!
+            </h3>
+            <p className="font-body text-sm text-charcoal/80 leading-relaxed mb-6">
+              Thank you for reaching out to Aurea Events. We have received your
+              request and will get back to you within 24 hours.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setIsSubmitted(false)}
+              className="w-full bg-cobalt-700 hover:bg-cobalt-600 text-white font-body font-semibold text-xs uppercase tracking-wider py-3.5 rounded-full btn-transition shadow-md"
+            >
+              Done
+            </button>
+          </div>
+        </div>
       )}
     </form>
   );
