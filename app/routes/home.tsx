@@ -10,6 +10,7 @@ import StatsCounter from "~/components/StatsCounter";
 import GalleryGrid from "~/components/GalleryGrid";
 import { useReveal } from "~/hooks/useReveal";
 import ImageContainer from "~/components/ImagesContainer";
+import Socials from "~/components/Socials";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -444,8 +445,14 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===== SOCIALS ===== */}
+        <Socials />
+
         {/* ===== TESTIMONIALS ===== */}
-        <section className="section-padding bg-cream" id="testimonials">
+        <section
+          className="section-padding border-t bg-cream"
+          id="testimonials"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               ref={testimonialReveal.ref}

@@ -47,25 +47,25 @@ const contactInfo = [
     title: "Visit Us",
     lines: ["Lagos, Nigeria"],
   },
-  {
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-        />
-      </svg>
-    ),
-    title: "Call Us",
-    lines: ["+234 800 000 0000", "+234 900 000 0000"],
-  },
+  // {
+  //   icon: (
+  //     <svg
+  //       className="w-6 h-6"
+  //       fill="none"
+  //       viewBox="0 0 24 24"
+  //       stroke="currentColor"
+  //       strokeWidth="1.5"
+  //     >
+  //       <path
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+  //       />
+  //     </svg>
+  //   ),
+  //   title: "Call Us",
+  //   lines: ["+234 800 000 0000", "+234 900 000 0000"],
+  // },
   {
     icon: (
       <svg
@@ -83,7 +83,7 @@ const contactInfo = [
       </svg>
     ),
     title: "Email Us",
-    lines: ["hello@aureaevents.com", "info@aureaevents.com"],
+    lines: ["aureaeventsng@gmail.com"],
   },
   {
     icon: (
@@ -137,7 +137,7 @@ export default function Contact() {
         {/* Contact Info Cards */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {contactInfo.map((info, i) => (
                 <div
                   key={info.title}
