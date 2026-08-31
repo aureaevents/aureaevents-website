@@ -10,7 +10,7 @@ const testimonials: Testimonial[] = [
   {
     quote:
       "Aurea Events transformed our wedding into a fairy tale. Every detail was meticulously planned and beautifully executed. We couldn't have asked for a more magical day.",
-    name: "Adaeze & Chidi",
+    name: "Adefikayo & Busayo",
     role: "Wedding, Lagos",
   },
   {
@@ -21,15 +21,15 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "From the initial consultation to the final send-off, Aurea Events made my 40th birthday an unforgettable celebration. Their creativity is unmatched.",
-    name: "Tunde Bakare",
+      "From the initial consultation to the final send-off, Aurea Events made my birthday an unforgettable celebration. Their creativity is unmatched.",
+    name: "Rev Toyin Kehinde",
     role: "Birthday Celebration, Lagos",
   },
   {
     quote:
       "Working with Aurea Events was a dream. They listened to every detail and delivered beyond our expectations. Our guests are still talking about the event!",
     name: "Ngozi & Emeka",
-    role: "Traditional Wedding, Enugu",
+    role: "Traditional Wedding, Ibadan",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function TestimonialSlider() {
         setIsTransitioning(false);
       }, 300);
     },
-    [current, isTransitioning]
+    [current, isTransitioning],
   );
 
   const next = useCallback(() => {
@@ -75,7 +75,9 @@ export default function TestimonialSlider() {
       {/* Quote */}
       <div
         className={`transition-all duration-300 ${
-          isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"
+          isTransitioning
+            ? "opacity-0 translate-y-3"
+            : "opacity-100 translate-y-0"
         }`}
       >
         <blockquote className="font-heading text-xl md:text-2xl text-cobalt-900 leading-relaxed italic mb-8">

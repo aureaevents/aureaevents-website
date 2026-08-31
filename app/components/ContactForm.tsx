@@ -1,4 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const eventTypes = [
   "Wedding",
@@ -9,6 +14,7 @@ const eventTypes = [
 ];
 
 export default function ContactForm() {
+  const form = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +28,7 @@ export default function ContactForm() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -33,17 +40,83 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder — no backend
+
+    setError("");
+
+    if (!formData.name) {
+      setError("Please fill in your name");
+      return;
+    }
+    if (!formData.email) {
+      setError("Please fill in your email");
+      return;
+    }
+    if (!formData.phone) {
+      setError("Please fill in your phone number");
+      return;
+    }
+    if (!formData.eventType) {
+      setError("Please fill in your event type");
+      return;
+    }
+    if (!formData.eventDate) {
+      setError("Please fill in your event date");
+      return;
+    }
+    if (!formData.venueAvailability) {
+      setError("Please fill in your venue availability");
+      return;
+    }
+    if (!formData.guestsNo) {
+      setError("Please fill in your number of guests");
+      return;
+    }
+    if (!formData.budget) {
+      setError("Please fill in your budget");
+      return;
+    }
+    if (!formData.importantPoint) {
+      setError("Please fill in your important point");
+      return;
+    }
+    if (!formData.message) {
+      setError("Please fill in your message");
+      return;
+    }
     console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 4000);
+    console.log("Form:", form.current);
+    if (!form.current) {
+      console.error("Form is null");
+      return;
+    }
+    emailjs
+      .sendForm(emailJsServiceId, emailJsTemplateId, form.current, {
+        publicKey: emailJsPublicKey,
+      })
+      .then(
+        () => {
+          setIsSubmitted(true);
+          setTimeout(() => setIsSubmitted(false), 4000);
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setError("Failed to send message");
+          setTimeout(() => setError(""), 4000);
+        },
+      );
   };
 
   const inputClasses =
     "w-full font-body text-sm px-4 py-3.5 rounded-xl border border-cobalt-100 bg-white text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-cobalt-500 focus:ring-2 focus:ring-cobalt-100 btn-transition";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" id="contact-form">
+    <form
+      ref={form}
+      onSubmit={handleSubmit}
+      className="space-y-5"
+      id="contact-form"
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label
@@ -55,7 +128,7 @@ export default function ContactForm() {
           <input
             type="text"
             id="name"
-            name="name"
+            name="full_name"
             required
             value={formData.name}
             onChange={handleChange}
@@ -73,7 +146,7 @@ export default function ContactForm() {
           <input
             type="email"
             id="email"
-            name="email"
+            name="email_address"
             required
             value={formData.email}
             onChange={handleChange}
@@ -94,7 +167,7 @@ export default function ContactForm() {
           <input
             type="tel"
             id="phone"
-            name="phone"
+            name="phone_number"
             value={formData.phone}
             onChange={handleChange}
             placeholder="+234 800 000 0000"
@@ -111,7 +184,7 @@ export default function ContactForm() {
           <input
             type="text"
             id="eventtype"
-            name="eventtype"
+            name="occasion"
             value={formData.eventType}
             onChange={handleChange}
             placeholder="Wedding"
@@ -144,7 +217,7 @@ export default function ContactForm() {
           <input
             type="date"
             id="eventDate"
-            name="eventDate"
+            name="preferred_date"
             value={formData.eventDate}
             onChange={handleChange}
             className={inputClasses}
@@ -152,15 +225,15 @@ export default function ContactForm() {
         </div>
         <div>
           <label
-            htmlFor="venueAvailability"
+            htmlFor="venue_status"
             className="font-body text-xs font-semibold text-charcoal/70 uppercase tracking-wider mb-1.5 block"
           >
             Do you have a venue yet?
           </label>
           <select
-            id="eventType"
-            name="eventType"
-            value={formData.eventType}
+            id="venue_status"
+            name="venue_status"
+            value={formData.venueAvailability}
             onChange={handleChange}
             className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
           >
@@ -181,7 +254,7 @@ export default function ContactForm() {
           <input
             type="number"
             id="guestsNo"
-            name="guestsNo"
+            name="number_of_guests"
             value={formData.guestsNo}
             onChange={handleChange}
             className={inputClasses}
@@ -219,7 +292,7 @@ export default function ContactForm() {
           </label>
           <select
             id="importantPoint"
-            name="importantPoint"
+            name="what_matters_most"
             value={formData.importantPoint}
             onChange={handleChange}
             className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231976D2%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_12px_center] bg-size-[20px]`}
@@ -244,7 +317,7 @@ export default function ContactForm() {
           </label>
           <textarea
             id="message"
-            name="message"
+            name="other_notes"
             required
             rows={5}
             value={formData.message}
@@ -262,6 +335,12 @@ export default function ContactForm() {
       >
         {isSubmitted ? "✓ Message Sent!" : "Send Message"}
       </button>
+
+      {error && (
+        <p className="font-body text-sm text-red-600 mt-2 animate-fade-in">
+          {error}
+        </p>
+      )}
 
       {isSubmitted && (
         <p className="font-body text-sm text-green-600 mt-2 animate-fade-in">

@@ -13,11 +13,11 @@ export default function ImageContainer({
         alt={surfaceText}
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-linear-to-t from-cobalt-900/80 via-cobalt-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+      {/* <div className="absolute inset-0 bg-linear-to-t from-cobalt-900/80 via-cobalt-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
         <span className="font-heading text-white text-sm sm:text-base md:text-lg font-medium tracking-wide drop-shadow-md">
           {surfaceText}
         </span>
-      </div>
+      </div> */}
     </div>
   );
 }

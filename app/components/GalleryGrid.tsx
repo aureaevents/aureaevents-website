@@ -48,7 +48,7 @@ export default function GalleryGrid({
   return (
     <>
       {/* Filter Tabs */}
-      {showFilter && (
+      {/* {showFilter && (
         <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
           {categories.map((cat) => (
             <button
@@ -64,7 +64,7 @@ export default function GalleryGrid({
             </button>
           ))}
         </div>
-      )}
+      )} */}
 
       {/* Grid Layout matching reference design */}
       {/*
@@ -106,14 +106,14 @@ export default function GalleryGrid({
                 loading="lazy"
               />
               {/* Hover overlay text */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 translate-y-2 group-hover:translate-y-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+              {/* <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 translate-y-2 group-hover:translate-y-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                 <p className="font-body text-sm sm:text-base font-semibold text-white">
                   {img.alt}
                 </p>
                 <p className="font-body text-xs text-white/70 mt-1">
                   {img.category}
                 </p>
-              </div>
+              </div> */}
             </button>
           );
         })}
