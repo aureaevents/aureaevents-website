@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { Analytics } from "@vercel/analytics/react";
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -39,6 +41,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
@@ -67,7 +70,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-cream px-4 text-center">
       <h1 className="font-heading text-6xl text-cobalt-900 mb-4">{message}</h1>
-      <p className="font-body text-lg text-charcoal/70 mb-8 max-w-md">{details}</p>
+      <p className="font-body text-lg text-charcoal/70 mb-8 max-w-md">
+        {details}
+      </p>
       <a
         href="/"
         className="inline-block bg-cobalt-700 text-white font-body font-semibold px-8 py-3 rounded-full hover:bg-cobalt-600 btn-transition"
