@@ -161,7 +161,7 @@ export default function Contact() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="section-padding bg-cream">
+        <section id="form" className="section-padding bg-cream">
           <div
             ref={formReveal.ref}
             className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 transition-all duration-700 ${

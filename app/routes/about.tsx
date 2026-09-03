@@ -126,7 +126,7 @@ export default function About() {
         <section className="relative h-[60vh] min-h-100 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/main/Website 8.jpg"
+              src="/main/Website 8.webp"
               alt=""
               className="w-full h-full object-cover"
               fetchPriority="high"

@@ -154,7 +154,7 @@ const homeImages = [
   { src: "/main/Website 5.JPG", surfaceText: "Corporate Gala Night" },
   { src: "/main/Website 6.JPEG", surfaceText: "Celebration Stage Design" },
   { src: "/main/Website 7.JPEG", surfaceText: "VIP Birthday Party" },
-  { src: "/main/Website 8.jpg", surfaceText: "Atmospheric Lighting" },
+  { src: "/main/Website 8.webp", surfaceText: "Atmospheric Lighting" },
   { src: "/main/Website 9.JPEG", surfaceText: "Executive Gathering" },
   { src: "/main/Website 10.JPEG", surfaceText: "Outdoor Wedding Reception" },
   { src: "/main/Website 11.jpg", surfaceText: "Premium Event Experience" },
@@ -163,7 +163,7 @@ const homeImages = [
   // { src: "/main/Website 14.jpg", surfaceText: "Milestone Celebration" },
   // { src: "/main/Website 15.JPEG", surfaceText: "Milestone Celebration" },
   { src: "/main/Website 16.JPEG", surfaceText: "Milestone Celebration" },
-  { src: "/main/Website 16.jpg", surfaceText: "Milestone Celebration" },
+  // { src: "/main/Website 16.jpg", surfaceText: "Milestone Celebration" },
   { src: "/main/Website 17.JPEG", surfaceText: "Milestone Celebration" },
   { src: "/main/Website 18.JPEG", surfaceText: "Milestone Celebration" },
 ];
@@ -239,7 +239,7 @@ export default function Home() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}
             >
-              <Button to="/contact" variant="primary" size="lg">
+              <Button to="/contact#form" variant="primary" size="lg">
                 Plan Your Event
               </Button>
               <Button
@@ -288,7 +288,7 @@ export default function Home() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/main/Website 8.jpg"
+                  src="/main/Website 8.webp"
                   alt="Aurea Events — Elegant wedding setup"
                   className="w-full h-100 md:h-125 object-cover"
                   loading="lazy"
@@ -504,7 +504,7 @@ export default function Home() {
               special celebration, we&apos;re here to make it unforgettable.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button to="/contact" variant="gold" size="lg">
+              <Button to="/contact#form" variant="gold" size="lg">
                 Start Planning
               </Button>
               <Button

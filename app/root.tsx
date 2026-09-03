@@ -47,8 +47,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+import PromoPopup from "~/components/PromoPopup";
+
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <PromoPopup />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

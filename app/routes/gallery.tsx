@@ -139,7 +139,7 @@ export default function Gallery() {
               Let us create a stunning event that you&apos;ll be proud to share.
               Get in touch to start planning.
             </p>
-            <Button to="/contact" variant="gold" size="lg">
+            <Button to="/contact#form" variant="gold" size="lg">
               Start Your Journey
             </Button>
           </div>

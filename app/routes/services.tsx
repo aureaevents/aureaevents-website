@@ -330,7 +330,7 @@ export default function Services() {
               Tell us about your dream event and let our team craft a
               personalized plan to bring it to life.
             </p>
-            <Button to="/contact" variant="gold" size="lg">
+            <Button to="/contact#form" variant="gold" size="lg">
               Plan Your Event
             </Button>
           </div>
