@@ -155,9 +155,10 @@ const homeImages = [
   { src: "/main/Website 6.JPEG", surfaceText: "Celebration Stage Design" },
   { src: "/main/Website 7.JPEG", surfaceText: "VIP Birthday Party" },
   { src: "/main/Website 8.webp", surfaceText: "Atmospheric Lighting" },
-  { src: "/main/Website 9.JPEG", surfaceText: "Executive Gathering" },
+
   { src: "/main/Website 10.JPEG", surfaceText: "Outdoor Wedding Reception" },
   { src: "/main/Website 11.jpg", surfaceText: "Premium Event Experience" },
+  { src: "/main/Website 9.JPEG", surfaceText: "Executive Gathering" },
   // { src: "/main/Website 12.JPG", surfaceText: "Milestone Celebration" },
   // { src: "/main/Website 13.JPEG", surfaceText: "Milestone Celebration" },
   // { src: "/main/Website 14.jpg", surfaceText: "Milestone Celebration" },
@@ -206,14 +207,14 @@ export default function Home() {
           {/* background Hues */}
           <span
             className="
-    absolute rounded-2xl top-0 -left-10 opacity-30 blur-3xl w-xl h-112.5  
+    absolute rounded-2xl top-0 -left-10 opacity-40 blur-3xl w-xl h-112.5  
     bg-cobalt-900/80
   "
           ></span>
 
           <span
             className="
-    absolute rounded-2xl bottom-40 right-0 opacity-30 blur-3xl w-xl h-112.5 
+    absolute rounded-2xl bottom-40 right-0 opacity-40 blur-3xl w-xl h-112.5 
     bg-purple-900/80
   "
           ></span>
