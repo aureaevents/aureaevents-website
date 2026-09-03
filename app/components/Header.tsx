@@ -48,7 +48,7 @@ export default function Header() {
           <img
             src="/Aurea_Events_Logo1.png"
             alt="Aurea Events Logo"
-            className="h-12 w-auto object-contain rounded"
+            className="h-12 w-auto scale-90 md:scale-100 object-contain rounded"
             width={48}
             height={48}
           />

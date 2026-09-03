@@ -56,11 +56,11 @@ export default function PromoPopup() {
         </button>
 
         {/* Left — Image */}
-        <div className="relative h-56 md:h-auto">
+        <div className="relative h-fit grid place-items-center md:h-auto">
           <img
             src="/main/Proposal Offer.webp"
             alt="Aurea Events — Special Offer"
-            className="w-full h-full object-cover"
+            className="md:w-full md:h-full h-75 object-cover aspect-auto "
           />
         </div>
 
