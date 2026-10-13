@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <header
       id="site-header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-lg py-3`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-lg sm:py-3 py-2 `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
@@ -48,7 +48,7 @@ export default function Header() {
           <img
             src="/Aurea_Events_Logo1.png"
             alt="Aurea Events Logo"
-            className="h-12 w-auto scale-90 md:scale-100 object-contain rounded"
+            className="sm:h-10 h-8 w-auto scale-90 md:scale-100 object-contain rounded"
             width={48}
             height={48}
           />
@@ -108,7 +108,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed top-18  w-screen bg-cobalt-900/98 backdrop-blur-lg z-40 transition-all duration-500 flex flex-col py-6 items-center justify-center ${
+        className={`lg:hidden fixed top-12  w-screen bg-cobalt-900/98 backdrop-blur-lg z-40 transition-all duration-500 flex flex-col py-6 items-center justify-center ${
           isMobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >

@@ -74,7 +74,7 @@ export default function PromoPopup() {
             id="promo-popup-title"
             className="font-heading text-2xl sm:text-3xl text-cobalt-900 leading-tight mb-3"
           >
-            Make Your Next
+            Make Your
             <br />
             Proposal <span className="text-gold-500">Unforgettable</span>
           </h2>
